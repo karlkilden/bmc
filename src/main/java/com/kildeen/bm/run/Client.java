@@ -25,12 +25,19 @@ public class Client {
 			if (EXIT.equals(s)) {
 				break;
 			}
-			System.out.println(commandRunner.handle(s));
+			System.out.println(handleCommand(s));
 		}
 	}
-
-	public void help() {
-		System.out.println(HELP);
+	
+	public String handleCommand(final String command) {
+		return commandRunner.handle(command);
+	}
+	
+	/**
+	 * The runner that can handle commands. Exposed for clients that wish to do their own plumming.
+	 */
+	public CommandRunner getCommandRunner() {
+		return commandRunner;
 	}
 
 }

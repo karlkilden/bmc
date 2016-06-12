@@ -1,5 +1,6 @@
 package com.kildeen.bm.run;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -31,6 +32,11 @@ public class ClientTest {
 	public void testName() throws Exception {
 		commandHandler = mock(CommandRunner.class);
 		client = new Client(commandHandler);
+	}
+	
+	@Test
+	public void runner_notNull() throws Exception {
+		assertThat(client.getCommandRunner()).isNotNull();
 	}
 
 	@Test
@@ -65,12 +71,6 @@ public class ClientTest {
 
 	private void startAndAcceptOneCommand() {
 		client.start();
-	}
-
-	@Test
-	public void help() throws Exception {
-		client.help();
-		verifyOut(Client.HELP);
 	}
 
 }

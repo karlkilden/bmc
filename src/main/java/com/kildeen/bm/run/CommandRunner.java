@@ -1,8 +1,16 @@
 package com.kildeen.bm.run;
 
 import com.kildeen.bm.ExceptionHelper;
+import com.kildeen.bm.boot.CommandGroupDefinition;
 import com.kildeen.bm.boot.CommandStorage;
 
+/**
+ * This class accepts commands that was provided passed in originally by a
+ * {@link CommandGroupDefinition}
+ * 
+ * @author Kalle
+ *
+ */
 public class CommandRunner {
 	private static final String OK = " OK";
 
@@ -14,6 +22,10 @@ public class CommandRunner {
 
 	}
 
+	/**
+	 * Unknown commands will just be echoed with 'unknown command'. If the
+	 * command is mapped to a method that method will be called
+	 */
 	public String handle(String cmd) {
 		String method = commandStorage.getMethod(cmd);
 		if (method == null) {
