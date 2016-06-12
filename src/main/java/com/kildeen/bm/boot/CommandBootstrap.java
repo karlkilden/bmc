@@ -8,10 +8,10 @@ import java.util.Map;
 
 public class CommandBootstrap {
 
-	private MethodReader methodReader = new MethodReader();
+	private final MethodReader methodReader = new MethodReader();
 	private final CommandStorage commandStorage = new CommandStorage();
 
-	public CommandBootstrap(CommandGroupDefinition... commandGroupDefinitions) {
+	public CommandBootstrap(final CommandGroupDefinition... commandGroupDefinitions) {
 		for (CommandGroupDefinition commandGroupDefinition : commandGroupDefinitions) {
 			storeCommands(commandGroupDefinition);
 		}
@@ -20,7 +20,7 @@ public class CommandBootstrap {
 	CommandBootstrap() {
 	}
 
-	void storeCommands(CommandGroupDefinition definition) {
+	void storeCommands(final CommandGroupDefinition definition) {
 		List<Object> commandGroups = copyCommandGroupClazzesThrowIfEmpty(definition);
 		for (Object commandGroup : commandGroups) {
 			Map<String, String> commandsToMethodNames = getCommandResolver(commandGroup.getClass(), methodReader)
@@ -33,15 +33,15 @@ public class CommandBootstrap {
 		return commandStorage;
 	}
 
-	private List<Object> copyCommandGroupClazzesThrowIfEmpty(CommandGroupDefinition cmds) {
-		List<Object> commandDefinitions = new ArrayList<>(emptyIfNull(cmds.getCommandGroups()));
+	private List<Object> copyCommandGroupClazzesThrowIfEmpty(final CommandGroupDefinition cmds) {
+		final List<Object> commandDefinitions = new ArrayList<>(emptyIfNull(cmds.getCommandGroups()));
 		if (commandDefinitions.isEmpty()) {
 			BootErrorCode.EMPTY_DEFINITION.illegalArgument();
 		}
 		return commandDefinitions;
 	}
 
-	CommandResolver getCommandResolver(Class<?> commandGroup, MethodReader methodReader) {
+	CommandResolver getCommandResolver(final Class<?> commandGroup, final MethodReader methodReader) {
 		return new CommandResolver(commandGroup, methodReader);
 	}
 }

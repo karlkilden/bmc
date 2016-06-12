@@ -8,11 +8,11 @@ public class Client {
 	static final String START = "Bm is ready";
 	static final String HELP = "help";
 
-	private Scanner sc;
+	private final Scanner sc;
 
-	private CommandRunner commandRunner;
+	private final CommandRunner commandRunner;
 
-	public Client(CommandRunner commandRunner) {
+	public Client(final CommandRunner commandRunner) {
 		this.commandRunner = commandRunner;
 		sc = new Scanner(System.in);
 	}

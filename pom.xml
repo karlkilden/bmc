@@ -18,8 +18,12 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<compiler.plugin.version>3.5.1</compiler.plugin.version>
+
 
 		<log4j.version>2.0.2</log4j.version>
+		<jacoco.version>0.7.7.201606060606</jacoco.version>
+		<pitest.version>1.1.10</pitest.version>
 		<mockito.version>1.10.19</mockito.version>
 		<systemrules.version>1.16.0</systemrules.version>
 
@@ -73,6 +77,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.plugin.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -82,8 +87,15 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.7.201606060606</version>
+				<version>${jacoco.version}</version>
 			</plugin>
+
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>${pitest.version}</version>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>

@@ -17,9 +17,9 @@ import com.kildeen.bm.CommandMapping;
  *
  */
 public class CommandResolver {
-	private Map<String, String> cmdToMethodName;
-	private Class<?> commandGroup;
-	private MethodReader commandReader;
+	private final Map<String, String>  cmdToMethodName = new HashMap<>();
+	private final Class<?> commandGroup;
+	private final MethodReader commandReader;
 
 	public CommandResolver(Class<?> commandGroup, MethodReader commandReader) {
 		this.commandGroup = commandGroup;
@@ -31,22 +31,21 @@ public class CommandResolver {
 	 * @return A map with cmd -> method name. 
 	 */
 	public Map<String, String> build() {
-		cmdToMethodName = new HashMap<>();
 
 		for (Method m : commandGroup.getDeclaredMethods()) {
 			MethodReadMode methodReadMode = commandGroup.isAnnotationPresent(CommandMapping.class)
 					? MethodReadMode.ALLOW_ALL : MethodReadMode.REQUIRE_ANNOTATION;
 			Optional<String> possibleCommand = commandReader.resolveCommandMappingName(m, methodReadMode);
 			if (possibleCommand.isPresent()) {
-				String cmd = possibleCommand.get();
-				String methodName = m.getName();
+				final String cmd = possibleCommand.get();
+				final String methodName = m.getName();
 				addCommandOrThrowIfDuplicated(cmd, methodName);
 			}
 		}
 		return Collections.unmodifiableMap(cmdToMethodName);
 	}
 
-	private void addCommandOrThrowIfDuplicated(String cmd, String methodName) {
+	private void addCommandOrThrowIfDuplicated(final String cmd, final String methodName) {
 		if (cmdToMethodName.containsKey(cmd)) {
 			BootErrorCode.DUPLICATED.illegalArgument( cmd, commandGroup.getName());
 		} else {

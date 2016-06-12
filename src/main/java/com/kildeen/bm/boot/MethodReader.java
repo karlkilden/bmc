@@ -17,7 +17,7 @@ public class MethodReader {
 
 	Optional<String> resolveCommandMappingName(Method m, MethodReadMode mode) {
 		String cmd;
-		CommandMapping annotation = m.getAnnotation(CommandMapping.class);
+		final CommandMapping annotation = m.getAnnotation(CommandMapping.class);
 		if (annotation == null) {
 			return returnEmptyOrMethodName(m, mode);
 		}
@@ -28,11 +28,11 @@ public class MethodReader {
 		return Optional.ofNullable(cmd);
 	}
 
-	private Optional<String> returnEmptyOrMethodName(Method m, MethodReadMode mode) {
+	private Optional<String> returnEmptyOrMethodName(final Method m, final MethodReadMode mode) {
 		return Optional.ofNullable(annotationRequired(mode) ? null : m.getName());
 	}
 
-	private boolean annotationRequired(MethodReadMode mode) {
+	private boolean annotationRequired(final MethodReadMode mode) {
 		return mode == MethodReadMode.REQUIRE_ANNOTATION;
 	}
 
