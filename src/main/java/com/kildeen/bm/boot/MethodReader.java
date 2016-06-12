@@ -16,7 +16,7 @@ import com.kildeen.bm.TreadSafe;
 public class MethodReader {
 
 	Optional<String> resolveCommandMappingName(Method m, MethodReadMode mode) {
-		String cmd = null;
+		String cmd;
 		CommandMapping annotation = m.getAnnotation(CommandMapping.class);
 		if (annotation == null) {
 			return returnEmptyOrMethodName(m, mode);

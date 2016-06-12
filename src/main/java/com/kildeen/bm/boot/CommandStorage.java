@@ -17,7 +17,7 @@ public class CommandStorage {
 
 	void add(Object currentCommandGroup, Map<String, String> currentCmdToMethods) {
 		Optional<String> potentialDuplicate = currentCmdToMethods.keySet().stream()
-				.filter(cmd -> commandsToCommandGroupClasses.containsKey(cmd)).findFirst();
+				.filter(commandsToCommandGroupClasses::containsKey).findFirst();
 
 		throwIfDuplicateFound(currentCommandGroup, potentialDuplicate);
 

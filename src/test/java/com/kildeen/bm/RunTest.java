@@ -4,12 +4,12 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.kildeen.bm.Client;
 import com.kildeen.bm.Col;
 import com.kildeen.bm.CommandMapping;
-import com.kildeen.bm.CommandRunner;
 import com.kildeen.bm.boot.CommandBootstrap;
 import com.kildeen.bm.boot.CommandGroupDefinition;
+import com.kildeen.bm.run.Client;
+import com.kildeen.bm.run.CommandRunner;
 
 public class RunTest {
 

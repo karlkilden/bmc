@@ -7,6 +7,7 @@ import com.kildeen.bm.ErrorCode;
  *
  */
 public enum BootErrorCode implements ErrorCode {
+	
 	EMPTY_DEFINITION(BM + "100", "The provided CommandGroupDefinition cannot be empty"), 
 	
 	DUPLICATED(BM + "101", "The command %s is duplicated in %s"),
@@ -22,10 +23,11 @@ public enum BootErrorCode implements ErrorCode {
 		this.message = message;
 
 	}
-	
+	@Override
 	public String getCode() {
 		return code;
 	}
+	@Override
 	public String getMessage() {
 		return message;
 	}

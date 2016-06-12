@@ -1,4 +1,4 @@
-package com.kildeen.bm;
+package com.kildeen.bm.run;
 
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 import static org.mockito.Mockito.mock;
@@ -12,8 +12,8 @@ import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
-import com.kildeen.bm.Client;
-import com.kildeen.bm.CommandRunner;
+import com.kildeen.bm.run.Client;
+import com.kildeen.bm.run.CommandRunner;
 public class ClientTest {
 
 	private static final String COMMAND = "a cmd";
@@ -57,7 +57,7 @@ public class ClientTest {
 
 	@Test
 	public void exit() throws Exception {
-	    systemInMock.provideLines("exit");
+	    systemInMock.provideLines(Client.EXIT);
 		startAndAcceptOneCommand();
 	}
 

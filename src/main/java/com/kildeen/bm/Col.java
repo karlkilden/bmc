@@ -43,13 +43,13 @@ public final class Col {
 	 */
 	@SafeVarargs
 	public static <E> ArrayList<E> newArrayList(E... elements) {
-		ArrayList<E> list = new ArrayList<E>(elements.length);
+		ArrayList<E> list = new ArrayList<>(elements.length);
 		Collections.addAll(list, elements);
 		return list;
 	}
 
 	public static <E> List<E> filtered(List<E> existing, Predicate<E> predicate) {
-		return existing.stream().filter(e -> predicate.test(e)).collect(Collectors.toList());
+		return existing.stream().filter(predicate::test).collect(Collectors.toList());
 	}
 	
 

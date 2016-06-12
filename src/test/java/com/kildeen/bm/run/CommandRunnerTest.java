@@ -1,4 +1,4 @@
-package com.kildeen.bm;
+package com.kildeen.bm.run;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -9,9 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.kildeen.bm.CommandRunner;
 import com.kildeen.bm.boot.CommandStorage;
 import com.kildeen.bm.boot.TopLevelMappingMock;
+import com.kildeen.bm.run.CommandRunner;
 
 public class CommandRunnerTest {
 

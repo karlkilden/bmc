@@ -1,9 +1,10 @@
-package com.kildeen.bm;
+package com.kildeen.bm.run;
 
 import java.util.Scanner;
 
 public class Client {
 
+	static final String EXIT = "exit";
 	static final String START = "Bm is ready";
 	static final String HELP = "help";
 
@@ -21,7 +22,7 @@ public class Client {
 
 		while (sc.hasNext()) {
 			String s = sc.nextLine();
-			if (s.equals("exit")) {
+			if (EXIT.equals(s)) {
 				break;
 			}
 			System.out.println(commandRunner.handle(s));

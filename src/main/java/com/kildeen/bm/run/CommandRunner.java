@@ -1,5 +1,6 @@
-package com.kildeen.bm;
+package com.kildeen.bm.run;
 
+import com.kildeen.bm.ExceptionHelper;
 import com.kildeen.bm.boot.CommandStorage;
 
 public class CommandRunner {
